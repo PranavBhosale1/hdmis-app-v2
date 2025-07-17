@@ -7,26 +7,29 @@ import HowHdimsHelps from "@/components/HowHdimsHelps";
 import RegistrationGuide from "@/components/RegistrationGuide";
 import HospitalsOnboard from "@/components/HospitalsOnboard";
 import LoginModal from "@/components/LoginModal";
+import RegistrationModal from "@/components/RegistrationModal";
 
 const Index = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
       <Header 
-        onLoginClick={() => setIsModalOpen(true)}
-        onRegisterClick={() => setIsModalOpen(true)}
+        onLoginClick={() => setIsLoginOpen(true)}
+        onRegisterClick={() => setIsRegisterOpen(true)}
       />
       <HeroSection 
-        onLoginClick={() => setIsModalOpen(true)}
-        onRegisterClick={() => setIsModalOpen(true)}
+        onLoginClick={() => setIsLoginOpen(true)}
+        onRegisterClick={() => setIsRegisterOpen(true)}
       />
       <AboutSection />
       <FeatureCards />
       <HowHdimsHelps />
       <RegistrationGuide />
       <HospitalsOnboard />
-      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <RegistrationModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
     </div>
   );
 };

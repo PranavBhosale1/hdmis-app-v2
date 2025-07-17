@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import medicalLaptopIcon from "@/assets/medical-laptop-icon.png";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -12,215 +10,48 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
-  const [activeTab, setActiveTab] = useState("government");
-  const [viewMode, setViewMode] = useState<"register" | "login">("register");
+  const [activeTab, setActiveTab] = useState<"government" | "medical">("government");
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-center text-primary">
-            Health Data Information Management System
-          </DialogTitle>
-        </DialogHeader>
-        
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="government" className="data-[state=active]:bg-gray-400 data-[state=active]:text-white">
-              Government
-            </TabsTrigger>
-            <TabsTrigger value="medical" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              Medical Facility
-            </TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="government" className="space-y-4 mt-6">
-            {viewMode === "register" ? (
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="govt-admin">Admin Type</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="ADMIN TYPE" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="state">State Admin</SelectItem>
-                      <SelectItem value="district">District Admin</SelectItem>
-                      <SelectItem value="block">Block Admin</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="govt-state">State</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="STATE" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                      <SelectItem value="karnataka">Karnataka</SelectItem>
-                      <SelectItem value="gujarat">Gujarat</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="govt-verification">Verification ID</Label>
-                  <Input id="govt-verification" placeholder="VERIFICATION ID" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="govt-password">Password</Label>
-                  <Input id="govt-password" type="password" placeholder="PASSWORD" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="govt-confirm">Confirm Password</Label>
-                  <Input id="govt-confirm" type="password" placeholder="CONFIRM PASSWORD" />
-                </div>
-                
-                <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-2">Already Registered?</p>
-                  <Button 
-                    variant="link" 
-                    className="text-primary p-0 h-auto"
-                    onClick={() => setViewMode("login")}
-                  >
-                    LOGIN
-                  </Button>
-                </div>
-                
-                <Button className="w-full bg-primary hover:bg-primary/80">
-                  Register
-                </Button>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <h3 className="text-center text-muted-foreground mb-6">Login as an Admin</h3>
-                
-                <div>
-                  <Label htmlFor="login-verification">Verification ID</Label>
-                  <Input id="login-verification" placeholder="VERIFICATION ID" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="login-password">Password</Label>
-                  <Input id="login-password" type="password" placeholder="PASSWORD" />
-                </div>
-                
-                <Button className="w-full bg-primary hover:bg-primary/80">
-                  Login
-                </Button>
-                
-                <div className="text-right">
-                  <Button 
-                    variant="link" 
-                    className="text-muted-foreground text-sm p-0 h-auto"
-                  >
-                    Forgot Password?
-                  </Button>
-                </div>
-              </div>
-            )}
-          </TabsContent>
-          
-          <TabsContent value="medical" className="space-y-4 mt-6">
-            {viewMode === "register" ? (
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="med-state">State</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="STATE" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                      <SelectItem value="karnataka">Karnataka</SelectItem>
-                      <SelectItem value="gujarat">Gujarat</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-facility">Facility Name</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="FACILITY NAME" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="hospital1">City Hospital</SelectItem>
-                      <SelectItem value="hospital2">General Hospital</SelectItem>
-                      <SelectItem value="hospital3">Medical Center</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-nin">NIN ID</Label>
-                  <Input id="med-nin" placeholder="NIN ID" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-email">Email ID</Label>
-                  <Input id="med-email" type="email" placeholder="EMAIL ID" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-password">Password</Label>
-                  <Input id="med-password" type="password" placeholder="PASSWORD" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-confirm">Confirm Password</Label>
-                  <Input id="med-confirm" type="password" placeholder="CONFIRM PASSWORD" />
-                </div>
-                
-                <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-2">Already Registered?</p>
-                  <Button 
-                    variant="link" 
-                    className="text-primary p-0 h-auto"
-                    onClick={() => setViewMode("login")}
-                  >
-                    LOGIN
-                  </Button>
-                </div>
-                
-                <Button className="w-full bg-primary hover:bg-primary/80">
-                  Register
-                </Button>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <h3 className="text-center text-muted-foreground mb-6">Login as a Facility</h3>
-                
-                <div>
-                  <Label htmlFor="med-login-verification">Verification ID</Label>
-                  <Input id="med-login-verification" placeholder="VERIFICATION ID" />
-                </div>
-                
-                <div>
-                  <Label htmlFor="med-login-password">Password</Label>
-                  <Input id="med-login-password" type="password" placeholder="PASSWORD" />
-                </div>
-                
-                <Button className="w-full bg-primary hover:bg-primary/80">
-                  Login
-                </Button>
-                
-                <div className="text-right">
-                  <Button 
-                    variant="link" 
-                    className="text-muted-foreground text-sm p-0 h-auto"
-                  >
-                    Forgot Password?
-                  </Button>
-                </div>
-              </div>
-            )}
-          </TabsContent>
-        </Tabs>
+      <DialogContent className="max-w-xl p-0">
+        <div className="bg-[#e9e9e9] rounded-t-lg px-8 pt-8 pb-0">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-3 text-[#3b7e8a] text-lg font-semibold">
+              <img src={medicalLaptopIcon} alt="Logo" className="h-10 w-10" />
+              <span>Health Data Information<br/>Management System</span>
+            </DialogTitle>
+          </DialogHeader>
+        </div>
+        <div className="bg-[#f7f7f7] rounded-b-lg px-8 pb-8 pt-4">
+          <div className="flex justify-center mb-6">
+            <div className="flex w-full max-w-md rounded-full overflow-hidden border border-[#d1d1d1] bg-white">
+              <button
+                className={`flex-1 py-2 font-semibold text-lg transition-colors ${activeTab === "government" ? "bg-[#5e9ea7] text-white" : "bg-[#d1d1d1] text-[#5e9ea7]"}`}
+                onClick={() => setActiveTab("government")}
+              >
+                Government
+              </button>
+              <button
+                className={`flex-1 py-2 font-semibold text-lg transition-colors ${activeTab === "medical" ? "bg-[#5e9ea7] text-white" : "bg-[#d1d1d1] text-[#5e9ea7]"}`}
+                onClick={() => setActiveTab("medical")}
+              >
+                Medical Facility
+              </button>
+            </div>
+          </div>
+          <div className="text-center text-[#b0b0b0] text-xl mb-6">
+            {activeTab === "government" ? "Login as an Admin" : "Login as an Facility"}
+          </div>
+          <div className="flex flex-col gap-4 items-center">
+            <Input className="max-w-md bg-white" placeholder="VERIFICATION ID" />
+            <Input className="max-w-md bg-white" type="password" placeholder="PASSWORD" />
+            <Button className="max-w-md w-full bg-[#5e9ea7] hover:bg-[#3b7e8a] text-white text-lg mt-2">Login</Button>
+            <div className="w-full flex justify-end mt-2">
+              <button className="text-xs text-[#222] opacity-70 hover:underline">Forgot Password?</button>
+            </div>
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );

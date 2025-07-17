@@ -38,20 +38,6 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
             {viewMode === "register" ? (
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="govt-state">State</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="STATE" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                      <SelectItem value="karnataka">Karnataka</SelectItem>
-                      <SelectItem value="gujarat">Gujarat</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div>
                   <Label htmlFor="govt-admin">Admin Type</Label>
                   <Select>
                     <SelectTrigger>
@@ -61,6 +47,20 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                       <SelectItem value="state">State Admin</SelectItem>
                       <SelectItem value="district">District Admin</SelectItem>
                       <SelectItem value="block">Block Admin</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <Label htmlFor="govt-state">State</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="STATE" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="maharashtra">Maharashtra</SelectItem>
+                      <SelectItem value="karnataka">Karnataka</SelectItem>
+                      <SelectItem value="gujarat">Gujarat</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -113,11 +113,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   Login
                 </Button>
                 
-                <div className="text-center">
+                <div className="text-right">
                   <Button 
                     variant="link" 
-                    className="text-primary text-sm"
-                    onClick={() => setViewMode("register")}
+                    className="text-muted-foreground text-sm p-0 h-auto"
                   >
                     Forgot Password?
                   </Button>
@@ -129,20 +128,6 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           <TabsContent value="medical" className="space-y-4 mt-6">
             {viewMode === "register" ? (
               <div className="space-y-4">
-                <div>
-                  <Label htmlFor="med-facility">Facility Name</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="FACILITY NAME" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="hospital1">City Hospital</SelectItem>
-                      <SelectItem value="hospital2">General Hospital</SelectItem>
-                      <SelectItem value="hospital3">Medical Center</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                
                 <div>
                   <Label htmlFor="med-state">State</Label>
                   <Select>
@@ -158,8 +143,27 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="med-verification">Verification ID</Label>
-                  <Input id="med-verification" placeholder="VERIFICATION ID" />
+                  <Label htmlFor="med-facility">Facility Name</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="FACILITY NAME" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="hospital1">City Hospital</SelectItem>
+                      <SelectItem value="hospital2">General Hospital</SelectItem>
+                      <SelectItem value="hospital3">Medical Center</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <Label htmlFor="med-nin">NIN ID</Label>
+                  <Input id="med-nin" placeholder="NIN ID" />
+                </div>
+                
+                <div>
+                  <Label htmlFor="med-email">Email ID</Label>
+                  <Input id="med-email" type="email" placeholder="EMAIL ID" />
                 </div>
                 
                 <div>
@@ -205,11 +209,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   Login
                 </Button>
                 
-                <div className="text-center">
+                <div className="text-right">
                   <Button 
                     variant="link" 
-                    className="text-primary text-sm"
-                    onClick={() => setViewMode("register")}
+                    className="text-muted-foreground text-sm p-0 h-auto"
                   >
                     Forgot Password?
                   </Button>

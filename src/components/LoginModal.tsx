@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -11,6 +12,12 @@ interface LoginModalProps {
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const [activeTab, setActiveTab] = useState<"government" | "medical">("government");
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // TODO: Add actual authentication logic here
+    navigate("/dashboard");
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -41,12 +48,17 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
             </div>
           </div>
           <div className="text-center text-[#b0b0b0] text-xl mb-6">
-            {activeTab === "government" ? "Login as an Admin" : "Login as an Facility"}
+            {activeTab === "government" ? "Login as an Admin" : "Login as a Facility"}
           </div>
           <div className="flex flex-col gap-4 items-center">
             <Input className="max-w-md bg-white" placeholder="VERIFICATION ID" />
             <Input className="max-w-md bg-white" type="password" placeholder="PASSWORD" />
-            <Button className="max-w-md w-full bg-[#5e9ea7] hover:bg-[#3b7e8a] text-white text-lg mt-2">Login</Button>
+            <Button 
+              className="max-w-md w-full bg-[#5e9ea7] hover:bg-[#3b7e8a] text-white text-lg mt-2"
+              onClick={handleLogin}
+            >
+              Login
+            </Button>
             <div className="w-full flex justify-end mt-2">
               <button className="text-xs text-[#222] opacity-70 hover:underline">Forgot Password?</button>
             </div>

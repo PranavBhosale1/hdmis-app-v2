@@ -6,6 +6,7 @@ interface HeaderProps {
   onRegisterClick?: () => void;
 }
 
+
 const Header = ({ onLoginClick, onRegisterClick }: HeaderProps) => {
   return (
     <header className="bg-primary text-primary-foreground py-3 px-6">

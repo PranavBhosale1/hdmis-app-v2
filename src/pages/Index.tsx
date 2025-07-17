@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import FeatureCards from "@/components/FeatureCards";
-import HowHdimsHelps from "@/components/HowHdimsHelps";
-import RegistrationGuide from "@/components/RegistrationGuide";
-import HospitalsOnboard from "@/components/HospitalsOnboard";
+import Header from "@/components/Landing Page/Header";
+import HeroSection from "@/components/Landing Page/HeroSection";
+import AboutSection from "@/components/Landing Page/AboutSection";
+import FeatureCards from "@/components/Landing Page/FeatureCards";
+import HowHdimsHelps from "@/components/Landing Page/HowHdimsHelps";
+import RegistrationGuide from "@/components/Landing Page/RegistrationGuide";
+import HospitalsOnboard from "@/components/Landing Page/HospitalsOnboard";
 import LoginModal from "@/components/LoginModal";
 import RegistrationModal from "@/components/RegistrationModal";
 
